@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "better",
+  "displayName": "better — Prompt Forge",
+  "version": "1.0.0",
+  "description": "Forge a rough idea into an execution-ready prompt. Distilled from Anthropic's own prompt-engineering documentation — every forged prompt carries a verifiable success criterion so the run drives itself to done.",
+  "author": {
+    "name": "realdeal88",
+    "url": "https://github.com/realdeal88"
+  },
+  "homepage": "https://github.com/realdeal88/better",
+  "repository": "https://github.com/realdeal88/better",
+  "license": "MIT",
+  "keywords": [
+    "prompt-engineering",
+    "prompts",
+    "prompt-forge",
+    "claude-code",
+    "claude-code-skill",
+    "claude-code-plugin",
+    "anthropic",
+    "claude",
+    "llm",
+    "ai"
+  ]
+}
