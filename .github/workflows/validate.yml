@@ -1,0 +1,45 @@
+name: validate
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  manifests:
+    name: Validate manifests & skill
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Plugin and marketplace JSON are valid
+        run: |
+          for f in .claude-plugin/plugin.json .claude-plugin/marketplace.json; do
+            echo "→ $f"
+            jq empty "$f"
+          done
+
+      - name: Plugin name resolves to 'better'
+        run: |
+          name=$(jq -r .name .claude-plugin/plugin.json)
+          test "$name" = "better" || { echo "plugin name is '$name', expected 'better'"; exit 1; }
+
+      - name: Marketplace lists the better plugin
+        run: |
+          jq -e '.plugins[] | select(.name == "better")' .claude-plugin/marketplace.json > /dev/null
+
+      - name: Skill has valid frontmatter
+        run: |
+          test -f skills/better/SKILL.md
+          head -1 skills/better/SKILL.md | grep -qx -- '---'
+          grep -qx -- 'name: better' skills/better/SKILL.md
+          grep -q '^description:' skills/better/SKILL.md
+          test -f skills/better/references/forge-anatomy.md
+
+      - name: No attribution fingerprints
+        run: |
+          if grep -rniE "co-authored-by|generated with|🤖|as an ai assistant" \
+              --include="*.md" --include="*.json" --exclude-dir=.git .; then
+            echo "Found attribution fingerprint — remove it."
+            exit 1
+          fi
+          echo "clean"

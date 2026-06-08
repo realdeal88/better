@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: How the rules are grounded
+    url: https://github.com/realdeal88/better/blob/main/docs/METHODOLOGY.md
+    about: Before proposing a rule change, see how each rule maps to an Anthropic source.
+  - name: Anthropic prompt engineering docs
+    url: https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview
+    about: The primary source the skill is distilled from.
