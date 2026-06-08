@@ -1,17 +1,21 @@
 # Before → After
 
-What `better` actually does, across task types. The "before" is what you type. The "after" is
-what it hands back — copy-paste ready, with a success criterion the run can check itself against.
+A gallery of forges across task types. For each: the rough line you type, **the cost of sending
+it raw**, and the prompt `better` forges instead — copy-paste ready, with a success criterion
+the run can verify itself against.
 
-Adapt these to your own work; the point is the *shape*, not the exact words.
+The shape is the lesson, not the exact words. Adapt freely.
 
 ---
 
 ## Build
 
-**Before** — `/better a dashboard showing my app's signups`
+**You type** — `/better a dashboard showing my app's signups`
 
-**After**
+**Raw, this costs you:** the model picks a chart library you don't use, invents a data shape,
+hardcodes a range, and you re-prompt the mismatches one by one.
+
+**Forged**
 
 ```
 Build a signups dashboard for <app>, in <its stack> (read @package.json + an existing
@@ -32,9 +36,12 @@ before claiming done.
 
 ## Fix / debug
 
-**Before** — `/better the login redirect loops forever sometimes`
+**You type** — `/better the login redirect loops forever sometimes`
 
-**After**
+**Raw, this costs you:** the model caps redirects or adds a guard at the first plausible spot —
+masking the symptom while the real cause survives and resurfaces later.
+
+**Forged**
 
 ```
 Fix an intermittent infinite redirect on login.
@@ -51,9 +58,12 @@ guard isn't repeated on other protected routes.
 
 ## Refactor
 
-**Before** — `/better split this 600-line component up`
+**You type** — `/better split this 600-line component up`
 
-**After**
+**Raw, this costs you:** the model "improves" things you didn't ask it to, renames props, and
+quietly changes behavior — now you're diffing for regressions instead of reviewing a clean split.
+
+**Forged**
 
 ```
 Refactor <Component> (~600 lines) into focused units.
@@ -69,11 +79,14 @@ if coverage is thin). Surface, don't fix, any unrelated issues you notice along 
 
 ## Write / content
 
-**Before** — `/better fast a launch tweet for my open-source CLI`
+**You type** — `/better fast a launch tweet for my open-source CLI`
 
-**After**
+**Raw, this costs you:** "🚀 Excited to announce…" — a generic announcement that buries what the
+tool does under hype no developer reads past.
 
 > Assumptions: developer audience, goal = clicks to the repo, punchy, ≤ 280 chars.
+
+**Forged**
 
 ```
 Write a launch tweet for <CLI>, a <one-line what it does> open-source tool, for a developer
@@ -88,9 +101,12 @@ paste-ready, plus 2 alternates with different hooks.
 
 ## Research / decide
 
-**Before** — `/better postgres or sqlite for a desktop note app`
+**You type** — `/better postgres or sqlite for a desktop note app`
 
-**After**
+**Raw, this costs you:** a neutral both-sides essay that lists tradeoffs and refuses to actually
+decide — leaving you exactly where you started.
+
+**Forged**
 
 ```
 Decide: Postgres or SQLite for a single-user desktop note-taking app. I want a
@@ -106,9 +122,12 @@ Success: I close this knowing what I'm using and why, in under two minutes.
 
 ## Analysis / data
 
-**Before** — `/better find my biggest churn month from this stripe export`
+**You type** — `/better find my biggest churn month from this stripe export`
 
-**After**
+**Raw, this costs you:** "biggest" is undefined, so the model picks a metric, ignores trials and
+refunds, and hands you a number you can't trust or reconcile.
+
+**Forged**
 
 ```
 From @stripe-export.csv, find the month with the highest customer churn.
@@ -126,9 +145,12 @@ cancellations; spot-check the worst month by hand before reporting.
 
 ## Image
 
-**Before** — `/better an app icon for a meditation timer`
+**You type** — `/better an app icon for a meditation timer`
 
-**After**
+**Raw, this costs you:** a busy, generic icon — clock hands, gradients, drop shadows — that
+looks like every other timer app and ignores the platform's shape rules.
+
+**Forged**
 
 ```
 App icon for a meditation timer, minimal flat-vector style. Composition: a single centered
@@ -142,13 +164,13 @@ clock hands, drop shadows.
 
 ## The pattern underneath
 
-Every "after" does the same three things a strong prompt must:
+Every forged prompt does the same three things — that's all prompt engineering really is:
 
-1. **Replaces adjectives with checkable specifics** — "biggest" → a defined formula, "punchy"
+1. **Replaces adjectives with checkable specifics** — "biggest" → a defined formula; "punchy"
    → "≤ 280 chars, lead with the pain."
-2. **States a success criterion the run can verify itself** — the line that lets it loop to
-   done instead of stopping at "looks plausible."
+2. **States a success criterion the run can verify itself against** — the line that lets it loop
+   to done instead of stopping at "looks plausible."
 3. **Names the verification mechanism** — run it, reconcile against a raw count, screenshot,
    spot-check — *before* claiming done.
 
-That's the whole craft. `better` just applies it instantly, every time.
+`better` applies all three in one shot, every time.
