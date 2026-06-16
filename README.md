@@ -7,7 +7,7 @@
 **A Claude Code skill that forges a half-formed idea into a precise, self-verifying prompt — instantly.**
 No five-round interview. One line in, a prompt the model can execute on the first try and drive to *done* on its own.
 
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![License: CC BY-ND 4.0](https://img.shields.io/badge/license-CC%20BY--ND%204.0-blue.svg)](LICENSE)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-plugin%20%2B%20skill-d97757)](https://code.claude.com/docs/en/plugins)
 [![Version](https://img.shields.io/badge/version-1.0.0-success.svg)](CHANGELOG.md)
 [![Grounded in Anthropic docs](https://img.shields.io/badge/grounded%20in-Anthropic%20docs-d97757.svg)](docs/METHODOLOGY.md)
@@ -239,4 +239,4 @@ welcome. The one rule: a rule change should cite the Anthropic source it comes f
 
 ## License
 
-[MIT](LICENSE). Use it, fork it, ship it.
+[CC BY-ND 4.0](LICENSE). Use it and share it freely — unchanged, and credited to me.
