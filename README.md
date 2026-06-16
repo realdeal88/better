@@ -14,6 +14,10 @@ No five-round interview. One line in, a prompt the model can execute on the firs
 [![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 [![GitHub stars](https://img.shields.io/github/stars/realdeal88/better?style=social)](https://github.com/realdeal88/better)
 
+<br>
+
+<img src="assets/demo.gif" alt="better forging a vague 'make my app faster' into a precise, self-verifying prompt with a target, scope, and a verifiable finish condition" width="840">
+
 </div>
 
 ---
